@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    font-size: 70pt;
+    color: #222;
+    background-color: #999;
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+section {
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    min-height: 80%;
+    background-color: #999;
+    color: #222;
+}
