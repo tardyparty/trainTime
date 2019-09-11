@@ -21,6 +21,11 @@ var time = 0;
 var freq = 0;
 
 
+// time variables
+var nextTrain = "";
+var away = "";
+
+
 // add train func
 $(document).on("click", "#add-train", function(event){
     event.preventDefault();
@@ -35,7 +40,7 @@ $(document).on("click", "#add-train", function(event){
         name: name,
         destination: dest,
         time: time,
-        freguency: freq,
+        frequency: freq,
     });
 
     $("#name-input").val('');
@@ -47,13 +52,28 @@ $(document).on("click", "#add-train", function(event){
 
 data.ref().on("child_added", function(snapshot){
 
-     console.log(snapshot.val().name);
-     console.log(snapshot.val().destination);
-     console.log(snapshot.val().time);
-     console.log(snapshot.val().freq);
+     var date = snapshot.val().time;
+     var each = snapshot.val().frequency;
+
+     var last = moment(date, "hhmm").fromNow();
+
+     away = last % each;
+
+     console.log(each);
+     console.log(away);
+     console.log(date);
+     
+
+     console.log(last);
 
     $("#traintable").append(`
-        
+        <tr>
+            <td>${snapshot.val().name}</td>
+            <td>${snapshot.val().destination}</td>
+            <td>${snapshot.val().frequency}</td>
+            <td>${nextTrain}</td>
+            <td>${away}</td>
+        </tr>
     `);
 
 });
