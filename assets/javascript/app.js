@@ -71,7 +71,7 @@ data.ref().on("child_added", function(snapshot){
             <td>${snapshot.val().name}</td>
             <td>${snapshot.val().destination}</td>
             <td>${snapshot.val().frequency}</td>
-            <td>${moment(nextTrain).format("hh:mm")}</td>
+            <td>${moment(nextTrain).format("LT")}</td>
             <td>${tMinutesTillTrain}</td>
         </tr>
     `);
