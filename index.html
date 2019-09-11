@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-database.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.4.1.js"
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -15,22 +16,64 @@
     <title>Train Times</title>
 </head>
 <body>
-    <header>Train Time</header>
-    <section>
-        <table>
-
-        </table>
-        <form action="">
-            <label for="">Train Name</label>
-            <input type="text" id="name">
-            <label for="">Destination</label>
-            <input type="text">
-            <label for="">Departure Time (HH-MM - Military Time)</label>
-            <input type="integer">
-            <label for="">Every _ minutes:</label>
-            <input type="integer">
-            <input type="submit">
-        </form>
+    <section class="container">
+        <br>
+        <div class="jumbotron">
+            <h1 class="text-center">Train Schedule</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        Current Train Schedule
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-lg table-hover" id="traintable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody id="traintable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        New Train
+                    </div>
+                    <div class="card-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name-input">Train Name</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="destination-input">Destination</label>
+                                <input type="text" class="form-control" id="destination-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="starttime-input">First Train Time (HH:mm - Military Time)</label>
+                                <input type="number" class="form-control" id="starttime-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="frequency-input">Frequency</label>
+                                <input type="number" class="form-control" id="frequency-input">
+                            </div>
+                            <div>
+                                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+    <script src="assets/javascript/app.js"></script>
 </body>
 </html>
