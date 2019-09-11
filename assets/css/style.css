@@ -5,3 +5,25 @@
 .container {
     margin-bottom: 50px;
 }
+
+.jumboHead,
+.cardHead {
+    background-color: #002d72;
+}
+
+h1 {
+    color: #f2a900;
+}
+
+h2,
+.cardHead,
+.btn {
+    color: white;
+}
+
+.btn {
+    background-color: #f2a900;
+}
+
+
+

@@ -21,9 +21,9 @@ var time = 0;
 var freq = 0;
 
 
-// time variables
-var nextTrain = "";
-var away = "";
+// // time variables
+// var nextTrain = "";
+// var away = "";
 
 
 // add train func
@@ -52,27 +52,27 @@ $(document).on("click", "#add-train", function(event){
 
 data.ref().on("child_added", function(snapshot){
 
-     var date = snapshot.val().time;
+     var firstTime = snapshot.val().time;
      var each = snapshot.val().frequency;
+     var currentTime = moment();
+     var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+     var difftime = moment().diff(moment(firstTimeConverted), "minutes");
+     var tRemainder = difftime % each;
+     var tMinutesTillTrain = each - tRemainder;
+     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 
-     var last = moment(date, "hhmm").fromNow();
-
-     away = last % each;
 
      console.log(each);
-     console.log(away);
-     console.log(date);
+     console.log(firstTimeConverted);
      
-
-     console.log(last);
 
     $("#traintable").append(`
         <tr>
             <td>${snapshot.val().name}</td>
             <td>${snapshot.val().destination}</td>
             <td>${snapshot.val().frequency}</td>
-            <td>${nextTrain}</td>
-            <td>${away}</td>
+            <td>${moment(nextTrain).format("hh:mm")}</td>
+            <td>${tMinutesTillTrain}</td>
         </tr>
     `);
 
